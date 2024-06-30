@@ -29,4 +29,15 @@ Code contributions:
 2. Make code changes
 3. (if needed) Pull latest changes from main
 4. Create pull request into main
-5. Merge to main
+5. Once approved, merge to main
+
+File or asset contributions:
+1. Click _Add file_ > _Upload files_
+![image](https://github.com/slowstate/pirate-software-game-jam-15-test/assets/172807687/7da9bd90-7a1f-4e49-b5b8-f10f98b5d0cb)
+2. Add your files, add a description and create a new branch - this will open a pull request
+![image](https://github.com/slowstate/pirate-software-game-jam-15-test/assets/172807687/e624fc8c-34ea-40d2-b426-5a65ebd0ee5d)
+3. Once approved, merge to main
+
+Documentation or text file contributions:
+
+1. Make code changes directly to file and commit directly to main

@@ -40,4 +40,4 @@ File or asset contributions:
 
 Documentation or text file contributions:
 
-1. Make code changes directly to file and commit directly to main
+1. Make changes directly to file and commit directly to main

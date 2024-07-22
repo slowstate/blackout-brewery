@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqal78kfc8kbf"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_jn2jr"]
+[ext_resource type="PackedScene" uid="uid://b73anoref74kw" path="res://scenes/shop.tscn" id="2_5446u"]
+[ext_resource type="PackedScene" uid="uid://dyxfn6pp3hita" path="res://scenes/workstation.tscn" id="3_cia2w"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_jn2jr")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Shop" parent="." instance=ExtResource("2_5446u")]
+
+[node name="Workstation" parent="." instance=ExtResource("3_cia2w")]
+visible = false
+
+[node name="CustomerSpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="shopButtonPressed" from="Shop" to="." method="_on_shop_shop_button_pressed"]
+[connection signal="workstationButtonPressed" from="Workstation" to="." method="_on_workstation_workstation_button_pressed"]
+[connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]

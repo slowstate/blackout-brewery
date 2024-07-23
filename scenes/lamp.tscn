@@ -1,7 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://edhssintvnyi"]
 
 [ext_resource type="Script" path="res://scripts/lamp.gd" id="1_58b5m"]
-[ext_resource type="Texture2D" uid="uid://cwd5244x7sg1l" path="res://assets/lamp/lamp.png" id="1_a31gl"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hrsjd"]
+load_path = "res://.godot/imported/lamp.png-97c27176a1b4f1824ce844ce9ed363bd.ctex"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fbauy"]
 radius = 36.0
@@ -11,7 +13,7 @@ height = 106.0
 script = ExtResource("1_58b5m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_a31gl")
+texture = SubResource("CompressedTexture2D_hrsjd")
 
 [node name="DraggableArea" type="Area2D" parent="."]
 position = Vector2(2, -1)

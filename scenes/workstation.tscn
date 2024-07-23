@@ -26,14 +26,19 @@ position = Vector2(0, -141)
 [node name="Node" type="Node" parent="."]
 
 [node name="Lamp" parent="Node" instance=ExtResource("1_wfciu")]
+z_index = -100
 position = Vector2(484, 231)
 
 [node name="Button" type="Button" parent="."]
+z_index = -25
+z_as_relative = false
+y_sort_enabled = true
 offset_left = -206.0
 offset_top = 278.0
 offset_right = 190.0
 offset_bottom = 318.0
 text = "Shop"
+clip_text = true
 
 [connection signal="workstationButtonPressed" from="." to="." method="_on_workstation_button_pressed"]
 [connection signal="bottleClicked" from="Bottle" to="." method="_on_bottle_bottle_clicked"]

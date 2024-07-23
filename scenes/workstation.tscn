@@ -5,19 +5,24 @@
 [ext_resource type="PackedScene" uid="uid://edhssintvnyi" path="res://scenes/lamp.tscn" id="1_wfciu"]
 
 [node name="Workstation" type="Node2D"]
+z_index = -100
 script = ExtResource("1_gyorl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lemh7")
 
-[node name="Lamp" parent="." instance=ExtResource("1_wfciu")]
-
 [node name="Button" type="Button" parent="."]
-offset_left = -206.0
-offset_top = 278.0
-offset_right = 190.0
-offset_bottom = 318.0
+offset_left = -146.0
+offset_top = 618.0
+offset_right = 250.0
+offset_bottom = 658.0
 text = "Shop"
+
+[node name="Node" type="Node" parent="."]
+
+[node name="CharacterBody2D" parent="Node" instance=ExtResource("1_wfciu")]
+z_index = -50
+position = Vector2(484, 231)
 
 [connection signal="workstationButtonPressed" from="." to="." method="_on_workstation_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

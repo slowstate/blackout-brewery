@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://edhssintvnyi"]
+[gd_scene load_steps=4 format=3 uid="uid://edhssintvnyi"]
 
-[node name="Lamp" type="Node2D"]
+[ext_resource type="Script" path="res://scripts/lamp.gd" id="1_58b5m"]
+[ext_resource type="Texture2D" uid="uid://cwd5244x7sg1l" path="res://assets/lamp/lamp.png" id="1_a31gl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fbauy"]
+radius = 36.0
+height = 106.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_58b5m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_a31gl")
+
+[node name="DraggableArea" type="Area2D" parent="."]
+position = Vector2(2, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggableArea"]
+position = Vector2(-28, -21)
+shape = SubResource("CapsuleShape2D_fbauy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_fbauy")
+
+[connection signal="body_entered" from="DraggableArea" to="." method="_on_draggable_area_body_entered"]
+[connection signal="body_exited" from="DraggableArea" to="." method="_on_draggable_area_body_exited"]

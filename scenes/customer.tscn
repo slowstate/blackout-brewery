@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdlmeq0gpkfhd"]
+
+[ext_resource type="Script" path="res://scripts/customer.gd" id="1_t2dt5"]
+[ext_resource type="Texture2D" uid="uid://mq4psnlum8dl" path="res://assets/sprites/customer.png" id="2_6e5af"]
+
+[node name="Customer" type="Node2D"]
+script = ExtResource("1_t2dt5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6e5af")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

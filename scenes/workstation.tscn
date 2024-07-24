@@ -24,8 +24,6 @@ text = "Shop"
 z_index = -50
 position = Vector2(484, 231)
 
-<<<<<<< Updated upstream
-=======
 [node name="Button" type="Button" parent="."]
 z_as_relative = false
 offset_left = -206.0
@@ -35,6 +33,5 @@ offset_bottom = 318.0
 text = "Shop"
 clip_text = true
 
->>>>>>> Stashed changes
 [connection signal="workstationButtonPressed" from="." to="." method="_on_workstation_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -8,7 +8,6 @@ radius = 38.0
 height = 104.0
 
 [node name="Node2D" type="Node2D"]
-z_index = -50
 script = ExtResource("1_58b5m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

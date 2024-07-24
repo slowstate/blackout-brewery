@@ -36,6 +36,7 @@ func _on_customer_spawn_timer_timeout():
 		current_customer.queue_free()
 	current_customer = customer_scene.instantiate()
 	current_customer.customerOrderTimeout.connect(_customer_order_timeout)
+	#current_customer.add_to_group("Customer")
 	shop.add_child(current_customer)
 
 

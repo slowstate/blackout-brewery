@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4cmybmh6p1mk"
-path="res://.godot/imported/lamp.png-97c27176a1b4f1824ce844ce9ed363bd.ctex"
+uid="uid://g2lqa11s1xg3"
+path="res://.godot/imported/bottle.png-ced750e060a40f63d3700588dd85a96d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/lamp/lamp.png"
-dest_files=["res://.godot/imported/lamp.png-97c27176a1b4f1824ce844ce9ed363bd.ctex"]
+source_file="res://assets/sprites/bottle.png"
+dest_files=["res://.godot/imported/bottle.png-ced750e060a40f63d3700588dd85a96d.ctex"]
 
 [params]
 

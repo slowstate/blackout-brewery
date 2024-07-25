@@ -1,14 +1,46 @@
 extends Node2D
 
+signal customerOrderTimeout
+signal customerOrderComplete
+signal customerOrderWrong
+var orderBase
+var orderIngredient
+var orderFulfilled = false
+
+@onready var timer = $Timer
+@onready var order_dialog = $Order/OrderDialog
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# create random purchase order
-	# random dialogue "Hi, I want [purchase order]"
-	# random timer
-	pass # Replace with function body.
+	generate_order()
+	set_timeout()
+	add_to_group("customers")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func generate_order():
+	orderBase = randi_range(1, Recipes.bases.size()-1)
+	orderIngredient = randi_range(0, Recipes.ingredients.size()-1)
+	order_dialog.text = "Hi I want to buy " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient) + "!"
+	
+func check_order(potion):
+	if potion.base == orderBase && potion.ingredient == orderIngredient:
+		orderFulfilled = true
+		order_dialog.text = "Thank you for the " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient) + "!"
+		timer.stop()
+		timer.wait_time = 4
+		timer.start()
+		customerOrderComplete.emit()
+	else:
+		order_dialog.text ="I'm still waiting for my " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient)
+		customerOrderWrong.emit()
+
+func _on_timer_timeout():
+	customerOrderTimeout.emit()
+
+func set_timeout():
+	timer.wait_time = randi_range(5, 10)
+	timer.start()

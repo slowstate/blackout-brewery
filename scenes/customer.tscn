@@ -1,10 +1,60 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdlmeq0gpkfhd"]
+[gd_scene load_steps=6 format=3 uid="uid://bdlmeq0gpkfhd"]
 
 [ext_resource type="Script" path="res://scripts/customer.gd" id="1_t2dt5"]
-[ext_resource type="Texture2D" uid="uid://mq4psnlum8dl" path="res://assets/backgrounds/customer.png" id="2_k2bl1"]
+[ext_resource type="Texture2D" uid="uid://mq4psnlum8dl" path="res://assets/sprites/customer.png" id="2_6e5af"]
+[ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="3_1d7gm"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_fp3fq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_644yo"]
+font = ExtResource("3_1d7gm")
+font_size = 23
+font_color = Color(0.94902, 0.92549, 0.901961, 1)
 
 [node name="Customer" type="Node2D"]
 script = ExtResource("1_t2dt5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_k2bl1")
+texture = ExtResource("2_6e5af")
+
+[node name="Order" type="Control" parent="."]
+top_level = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -131.0
+offset_top = 45.0
+offset_right = -91.0
+offset_bottom = 85.0
+
+[node name="TextureRect2" type="TextureRect" parent="Order"]
+modulate = Color(0.94902, 0.92549, 0.901961, 1)
+offset_left = -424.0
+offset_top = -57.0
+offset_right = -41.0
+offset_bottom = 64.0
+texture = SubResource("CanvasTexture_fp3fq")
+
+[node name="TextureRect" type="TextureRect" parent="Order"]
+modulate = Color(0.0313726, 0.0352941, 0.101961, 1)
+layout_mode = 0
+offset_left = -421.0
+offset_top = -54.0
+offset_right = -44.0
+offset_bottom = 61.0
+texture = SubResource("CanvasTexture_fp3fq")
+
+[node name="OrderDialog" type="Label" parent="Order"]
+layout_mode = 0
+offset_left = -409.0
+offset_top = -45.0
+offset_right = -56.0
+offset_bottom = 49.0
+text = "Placeholder text"
+label_settings = SubResource("LabelSettings_644yo")
+autowrap_mode = 2
+text_overrun_behavior = 3
+text_direction = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

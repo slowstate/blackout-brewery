@@ -44,3 +44,8 @@ func _customer_order_timeout():
 	current_customer.queue_free()
 	customer_spawn_timer.wait_time = randi_range(3, 5)
 	customer_spawn_timer.start()
+	
+func _on_potion_updated(updated_potion):
+	if current_customer != null:
+		if updated_potion.base.name == current_customer.order:
+			current_customer.check_order(updated_potion)

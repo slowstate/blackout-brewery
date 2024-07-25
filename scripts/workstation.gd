@@ -30,3 +30,7 @@ func _on_green_potion_base_potion_base_clicked():
 
 func _on_potion_potion_clicked():
 	potion._clear_potion()
+
+
+func _on_shop_potion_submitted():
+	potion._clear_potion()

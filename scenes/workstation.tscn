@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyxfn6pp3hita"]
+[gd_scene load_steps=8 format=3 uid="uid://dyxfn6pp3hita"]
 
 [ext_resource type="Script" path="res://scripts/workstation.gd" id="1_gyorl"]
 [ext_resource type="Texture2D" uid="uid://c2ghuk5ucitc2" path="res://assets/backgrounds/workstation.png" id="1_lemh7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://vm1l6c0v2knu" path="res://scenes/bottle.tscn" id="4_c1bbj"]
 [ext_resource type="PackedScene" uid="uid://cmjx6yh188wfx" path="res://scenes/potion_bases/green_potion_base.tscn" id="5_k4x1b"]
 [ext_resource type="PackedScene" uid="uid://3tinlc3aoc6m" path="res://scenes/potion.tscn" id="6_m7865"]
+[ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="7_gd148"]
 
 [node name="Workstation" type="Node2D"]
 script = ExtResource("1_gyorl")
@@ -30,6 +31,7 @@ offset_left = -206.0
 offset_top = 278.0
 offset_right = 190.0
 offset_bottom = 318.0
+theme_override_fonts/font = ExtResource("7_gd148")
 text = "Shop"
 clip_text = true
 

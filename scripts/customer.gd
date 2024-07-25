@@ -1,10 +1,14 @@
 extends Node2D
 
 signal customerOrderTimeout
-var order = ""
+signal customerOrderComplete
+signal customerOrderWrong
+var orderBase
+var orderIngredient
 var orderFulfilled = false
 
 @onready var timer = $Timer
+@onready var order_dialog = $Order/OrderDialog
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,18 +22,21 @@ func _process(delta):
 	pass
 
 func generate_order():
-	var orders = []
-	order = "Potion"
-	get_node("Order/OrderDialog").text = "Hi I want to buy " + order + "!"
+	orderBase = randi_range(1, Recipes.bases.size()-1)
+	orderIngredient = randi_range(0, Recipes.ingredients.size()-1)
+	order_dialog.text = "Hi I want to buy " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient) + "!"
 	
 func check_order(potion):
-	if potion.base.name == order:
+	if potion.base == orderBase && potion.ingredient == orderIngredient:
 		orderFulfilled = true
-		get_node("").text = "Thank you for the " + order + "!"
+		order_dialog.text = "Thank you for the " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient) + "!"
 		timer.stop()
-		queue_free()
+		timer.wait_time = 4
+		timer.start()
+		customerOrderComplete.emit()
 	else:
-		get_node("").text = "I'm still waiting for my " + order
+		order_dialog.text ="I'm still waiting for my " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient)
+		customerOrderWrong.emit()
 
 func _on_timer_timeout():
 	customerOrderTimeout.emit()

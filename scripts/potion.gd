@@ -35,10 +35,9 @@ func _process(delta):
 
 func _potion_updated():
 	if bottle == Recipes.bottle.added:
-		print("change potion sprite")
 		sprite_2d.texture = bottle_sprite
 	else: sprite_2d.texture = null
-	print("Potion updated: " + str(sprite_2d.texture) + "| properties: bottle[" + str(bottle) + "] base[" + str(base) + "] ingredient[" + "]")
+
 	
 func _clear_potion():
 	bottle = Recipes.bottle.none

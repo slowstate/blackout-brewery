@@ -25,11 +25,11 @@ func generate_order():
 func check_order(potion):
 	if potion.base.name == order:
 		orderFulfilled = true
-		get_node("Order").text = "Thank you for the " + order + "!"
+		get_node("").text = "Thank you for the " + order + "!"
 		timer.stop()
 		queue_free()
 	else:
-		get_node("Order").text = "I'm still waiting for my " + order
+		get_node("").text = "I'm still waiting for my " + order
 
 func _on_timer_timeout():
 	customerOrderTimeout.emit()

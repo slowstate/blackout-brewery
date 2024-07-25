@@ -2,6 +2,7 @@ extends Node2D
 
 signal shopButtonPressed
 
+@onready var customer = $Customer
 @onready var potion = $Potion
 
 
@@ -28,5 +29,6 @@ func _on_workstation_potion_updated(updatedPotion):
 
 func _on_potion_potion_clicked():
 	#get_tree().get_first_node_in_group("Customer")
+	customer.check_order()
 	print("submit potion")
 

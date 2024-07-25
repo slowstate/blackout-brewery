@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://3tinlc3aoc6m" path="res://scenes/potion.tscn" id="6_m7865"]
 
 [node name="Workstation" type="Node2D"]
-z_index = -100
 script = ExtResource("1_gyorl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -23,16 +22,10 @@ position = Vector2(-489, 111)
 [node name="Potion" parent="." instance=ExtResource("6_m7865")]
 position = Vector2(0, -141)
 
-[node name="Node" type="Node" parent="."]
-
-[node name="Lamp" parent="Node" instance=ExtResource("1_wfciu")]
-z_index = -100
+[node name="Lamp" parent="." instance=ExtResource("1_wfciu")]
 position = Vector2(484, 231)
 
 [node name="Button" type="Button" parent="."]
-z_index = -25
-z_as_relative = false
-y_sort_enabled = true
 offset_left = -206.0
 offset_top = 278.0
 offset_right = 190.0
@@ -43,4 +36,5 @@ clip_text = true
 [connection signal="workstationButtonPressed" from="." to="." method="_on_workstation_button_pressed"]
 [connection signal="bottleClicked" from="Bottle" to="." method="_on_bottle_bottle_clicked"]
 [connection signal="potionBaseClicked" from="GreenPotionBase" to="." method="_on_green_potion_base_potion_base_clicked"]
+[connection signal="potionClicked" from="Potion" to="." method="_on_potion_potion_clicked"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

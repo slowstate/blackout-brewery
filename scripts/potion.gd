@@ -4,6 +4,8 @@ var bottle_sprite = preload("res://assets/sprites/bottle.png")
 
 @onready var sprite_2d = $Sprite2D
 
+signal potionClicked
+
 @export var bottle = Recipes.bottle.none :
 	get: return bottle
 	set(val):
@@ -32,12 +34,12 @@ func _process(delta):
 	pass
 
 func _potion_updated():
-	print("Potion updated: bottle[" + str(bottle) + "] base[" + str(base) + "] ingredient[" + "]")
 	if bottle == Recipes.bottle.added:
 		print("change potion sprite")
 		sprite_2d.texture = bottle_sprite
 	else: sprite_2d.texture = null
-
+	print("Potion updated: " + str(sprite_2d.texture) + "| properties: bottle[" + str(bottle) + "] base[" + str(base) + "] ingredient[" + "]")
+	
 func _clear_potion():
 	bottle = Recipes.bottle.none
 	base = Recipes.bases.none
@@ -46,4 +48,4 @@ func _clear_potion():
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("Left_Mouse_Button"):
-		_clear_potion()
+		potionClicked.emit()

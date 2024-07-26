@@ -1,0 +1,88 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfhaeugla4myc"]
+
+[ext_resource type="Script" path="res://scripts/UI/victory.gd" id="1_csan1"]
+[ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="1_pdqk5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_blctf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mm1oq"]
+font = ExtResource("1_pdqk5")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ypml"]
+font = ExtResource("1_pdqk5")
+
+[node name="victory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_csan1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -112.0
+offset_right = 209.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_blctf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -80.0
+offset_right = 64.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONGRATULATIONS!!"
+label_settings = SubResource("LabelSettings_mm1oq")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You succesfully finished day! "
+label_settings = SubResource("LabelSettings_2ypml")
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = 50.0
+offset_right = 40.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

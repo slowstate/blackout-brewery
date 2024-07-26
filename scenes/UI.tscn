@@ -14,10 +14,10 @@ outline_size = 1
 shadow_size = 0
 shadow_color = Color(0.869703, 0.87299, 0.929155, 0)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_2tte1"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_h5xju"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pkxol"]
-texture = SubResource("CanvasTexture_2tte1")
+texture = SubResource("CanvasTexture_h5xju")
 expand_margin_left = 48.0
 expand_margin_top = 8.0
 expand_margin_right = 48.0
@@ -42,7 +42,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_w3wco")
-metadata/_edit_use_anchors_ = true
 
 [node name="Start" type="VBoxContainer" parent="TextureRect"]
 layout_mode = 1
@@ -77,15 +76,3 @@ text = "START"
 [node name="Sprite2D" type="Sprite2D" parent="TextureRect/Start"]
 position = Vector2(158, -152)
 texture = ExtResource("2_4wjmt")
-
-[node name="Victory" type="VBoxContainer" parent="."]
-layout_mode = 2
-offset_left = 452.0
-offset_top = 504.0
-offset_right = 717.0
-offset_bottom = 504.0
-
-[node name="Defeat" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0

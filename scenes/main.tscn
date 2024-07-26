@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqal78kfc8kbf"]
+[gd_scene load_steps=8 format=3 uid="uid://cqal78kfc8kbf"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_jn2jr"]
 [ext_resource type="PackedScene" uid="uid://b73anoref74kw" path="res://scenes/shop.tscn" id="2_5446u"]
 [ext_resource type="PackedScene" uid="uid://dyxfn6pp3hita" path="res://scenes/workstation.tscn" id="3_cia2w"]
 [ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="4_8kvh6"]
 [ext_resource type="PackedScene" uid="uid://b2px4hx22ijve" path="res://scenes/UI.tscn" id="4_lmlxg"]
+[ext_resource type="PackedScene" uid="uid://cfhaeugla4myc" path="res://scenes/victory.tscn" id="5_xvd4o"]
+[ext_resource type="PackedScene" uid="uid://bl6plkfx1aq1f" path="res://scenes/defeat.tscn" id="6_paspv"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jn2jr")
@@ -23,10 +25,21 @@ one_shot = true
 [node name="DayTimer" type="Timer" parent="."]
 
 [node name="Menu" parent="." instance=ExtResource("4_lmlxg")]
+visible = false
 offset_left = -3.0
 offset_top = 322.0
 offset_right = -3.0
 offset_bottom = 322.0
+
+[node name="victory" parent="." instance=ExtResource("5_xvd4o")]
+visible = false
+
+[node name="Defeat" parent="." instance=ExtResource("6_paspv")]
+visible = false
+offset_left = -4.0
+offset_top = 351.0
+offset_right = -4.0
+offset_bottom = 351.0
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

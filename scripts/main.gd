@@ -8,7 +8,7 @@ var customer_scene = preload("res://scenes/customer.tscn")
 @onready var day_timer = $DayTimer
 @onready var day_timer_label = $Control/DayTimerLabel
 @onready var order_goal_label = $Control/OrderGoalLabel
-
+@onready var menu = $Menu
 var current_day = 1
 var order_goal
 var orders_completed
@@ -84,7 +84,7 @@ func _finish_day():
 	current_day += 1
 	_start_day()
 
-
+	
 func _on_day_timer_timeout():
 	#gameover
 	print("Game over")

@@ -1,23 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://bl6plkfx1aq1f"]
+[gd_scene load_steps=8 format=3 uid="uid://y4uudet8bhno"]
 
-[ext_resource type="Script" path="res://scripts/UI/defeat.gd" id="1_cewkp"]
+[ext_resource type="Script" path="res://scripts/UI/defeat.gd" id="1_hfemf"]
+[ext_resource type="Texture2D" uid="uid://mq4psnlum8dl" path="res://assets/sprites/customer.png" id="2_vuyny"]
 [ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="2_y1tpk"]
-[ext_resource type="Texture2D" uid="uid://mq4psnlum8dl" path="res://assets/sprites/customer.png" id="3_46c0x"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_tnvln"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_secq3"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_74ffo"]
+[sub_resource type="LabelSettings" id="LabelSettings_pmdpb"]
 line_spacing = 4.0
 font = ExtResource("2_y1tpk")
-font_size = 60
+font_size = 50
 outline_size = 1
 shadow_size = 0
 shadow_color = Color(0.869703, 0.87299, 0.929155, 0)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_2tte1"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_h5xju"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hdo13"]
-texture = SubResource("CanvasTexture_2tte1")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0xme0"]
+texture = SubResource("CanvasTexture_h5xju")
 expand_margin_left = 48.0
 expand_margin_top = 8.0
 expand_margin_right = 48.0
@@ -31,7 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_cewkp")
+script = ExtResource("1_hfemf")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(0, 0, 0, 1)
@@ -41,7 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("CanvasTexture_tnvln")
+texture = SubResource("CanvasTexture_secq3")
 
 [node name="Defeat" type="VBoxContainer" parent="TextureRect"]
 layout_mode = 1
@@ -59,22 +59,20 @@ grow_vertical = 0
 
 [node name="Label" type="Label" parent="TextureRect/Defeat"]
 layout_mode = 2
-text = "DEFEAT!"
-label_settings = SubResource("LabelSettings_74ffo")
+text = "DEFEAT"
+label_settings = SubResource("LabelSettings_pmdpb")
 horizontal_alignment = 1
 visible_characters_behavior = 1
 
 [node name="ResetButton" type="Button" parent="TextureRect/Defeat"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_y1tpk")
-theme_override_font_sizes/font_size = 32
-theme_override_styles/hover = SubResource("StyleBoxTexture_hdo13")
-text = "Reset"
+theme_override_font_sizes/font_size = 28
+theme_override_styles/hover = SubResource("StyleBoxTexture_0xme0")
+text = "RESTART GAME"
 
 [node name="Sprite2D" type="Sprite2D" parent="TextureRect/Defeat"]
 position = Vector2(158, -152)
-texture = ExtResource("3_46c0x")
-
-[connection signal="button_down" from="TextureRect/Defeat/ResetButton" to="." method="_on_reset_button_button_down"]
+texture = ExtResource("2_vuyny")

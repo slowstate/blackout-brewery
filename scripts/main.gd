@@ -2,44 +2,51 @@ extends Node2D
 
 var customer_scene = preload("res://scenes/customer.tscn")
 
+@onready var start = $Start
+@onready var victory = $Victory
+@onready var defeat = $Defeat
 @onready var shop = $Shop
 @onready var workstation = $Workstation
 @onready var customer_spawn_timer = $CustomerSpawnTimer
 @onready var day_timer = $DayTimer
-@onready var day_timer_label = $Control/DayTimerLabel
-@onready var order_goal_label = $Control/OrderGoalLabel
-@onready var menu = $Menu
+@onready var day_timer_label = $UI/DayTimerLabel
+@onready var order_goal_label = $UI/OrderGoalLabel
+@onready var ui = $UI
+
+
+var all_scenes = []
+
 var current_day = 1
 var order_goal
 var orders_completed
 var current_customer
+var new_day
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_start_day()
-	shop.visible = true
-	workstation.visible = false
-	
-	# Start spawn timer for first customer
-	customer_spawn_timer.wait_time = randi_range(3, 5)
-	customer_spawn_timer.start()
+	all_scenes = [
+		$Start,
+		$Victory,
+		$Defeat,
+		$Shop,
+		$Workstation
+	]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if orders_completed >= order_goal:
-		_finish_day()
-	day_timer_label.text = "Time left: " + str(int(day_timer.time_left))
-	order_goal_label.text = "Goal: " + str(orders_completed) + "/" + str(order_goal)
+	if !day_timer.is_stopped():
+		if orders_completed >= order_goal:
+			_finish_day()
+		day_timer_label.text = "Time left: " + str(int(day_timer.time_left))
+		order_goal_label.text = "Goal: " + str(orders_completed) + "/" + str(order_goal)
 	
 
 func _on_shop_shop_button_pressed():
-	shop.visible = false
-	workstation.visible = true
+	_change_scene(workstation)
 
 
 func _on_workstation_workstation_button_pressed():
-	shop.visible = true
-	workstation.visible = false
+	_change_scene(shop)
 
 
 func _on_customer_spawn_timer_timeout():
@@ -54,7 +61,7 @@ func _on_customer_spawn_timer_timeout():
 
 
 func _customer_order_timeout():
-	current_customer.queue_free()
+	if current_customer != null: current_customer.queue_free()
 	customer_spawn_timer.wait_time = randi_range(3, 5)
 	customer_spawn_timer.start()
 
@@ -71,20 +78,51 @@ func _on_potion_updated(updated_potion):
 			current_customer.check_order(updated_potion)
 
 func _start_day():
-	order_goal = 2 + current_day
+	order_goal = 0 + current_day
 	orders_completed = 0
-	day_timer.wait_time = 60
+	day_timer.wait_time = 61
 	day_timer.start()
+	# Start spawn timer for first customer
+	customer_spawn_timer.wait_time = randi_range(3, 5)
+	customer_spawn_timer.start()
+
 
 func _finish_day():
-	print("Day finished!")
-	#pause game
-	#victory screen
-	#press button to continue
-	current_day += 1
+	if current_customer != null: current_customer.queue_free()
+	day_timer.stop()
+	_change_scene(victory)
+
+
+func _on_day_timer_timeout():
+	_change_scene(defeat)
+
+
+func _change_scene(new_scene):
+	for scene in all_scenes:
+		if scene == new_scene:
+			scene.visible = true
+		else:
+			scene.visible = false
+	
+	if new_scene == all_scenes[0]: ui.visible = false
+	if new_scene == all_scenes[1]: ui.visible = false
+	if new_scene == all_scenes[2]: ui.visible = false
+	if new_scene == all_scenes[3]: ui.visible = true
+	if new_scene == all_scenes[4]: ui.visible = true
+
+
+func _on_start_start_pressed():
+	_change_scene(shop)
 	_start_day()
 
-	
-func _on_day_timer_timeout():
-	#gameover
-	print("Game over")
+
+func _on_defeat_reset_pressed():
+	current_day = 1
+	_change_scene(shop)
+	_start_day()
+
+
+func _on_victory_continue_pressed():
+	current_day += 1
+	_change_scene(shop)
+	_start_day()

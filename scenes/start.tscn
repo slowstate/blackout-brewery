@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b2px4hx22ijve"]
 
 [ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="1_8vnkk"]
-[ext_resource type="Script" path="res://scripts/UI/UIcontroler.gd" id="1_wjkau"]
+[ext_resource type="Script" path="res://scripts/UI/start.gd" id="1_wjkau"]
 [ext_resource type="Texture2D" uid="uid://mq4psnlum8dl" path="res://assets/sprites/customer.png" id="2_4wjmt"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_w3wco"]
@@ -14,78 +14,72 @@ outline_size = 1
 shadow_size = 0
 shadow_color = Color(0.869703, 0.87299, 0.929155, 0)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_2tte1"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_abyfd"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pkxol"]
-texture = SubResource("CanvasTexture_2tte1")
+texture = SubResource("CanvasTexture_abyfd")
 expand_margin_left = 48.0
 expand_margin_top = 8.0
 expand_margin_right = 48.0
 expand_margin_bottom = 8.0
 modulate_color = Color(0.306923, 0.306923, 0.306923, 1)
 
-[node name="Menu" type="Control"]
+[node name="Start" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wjkau")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-self_modulate = Color(0, 0, 0, 1)
+modulate = Color(0, 0, 0, 1)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_w3wco")
-metadata/_edit_use_anchors_ = true
 
-[node name="Start" type="VBoxContainer" parent="TextureRect"]
+[node name="Start" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -124.0
-offset_top = -227.0
-offset_right = 141.0
-offset_bottom = -143.0
+offset_left = -132.0
+offset_top = 104.0
+offset_right = 133.0
+offset_bottom = 188.0
 grow_horizontal = 2
-grow_vertical = 0
 
-[node name="Label" type="Label" parent="TextureRect/Start"]
+[node name="Label" type="Label" parent="Start"]
 layout_mode = 2
-text = "Blackout Alchemist"
+text = "Blackout Brewery"
 label_settings = SubResource("LabelSettings_lqmvv")
 horizontal_alignment = 1
 visible_characters_behavior = 1
 
-[node name="StartButton" type="Button" parent="TextureRect/Start"]
+[node name="StartButton" type="Button" parent="Start"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_8vnkk")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxTexture_pkxol")
 text = "START"
 
-[node name="Sprite2D" type="Sprite2D" parent="TextureRect/Start"]
-position = Vector2(158, -152)
+[node name="Sprite2D" type="Sprite2D" parent="Start"]
+position = Vector2(161.5, -142)
 texture = ExtResource("2_4wjmt")
 
-[node name="Victory" type="VBoxContainer" parent="."]
-layout_mode = 2
-offset_left = 452.0
-offset_top = 504.0
-offset_right = 717.0
-offset_bottom = 504.0
-
-[node name="Defeat" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[connection signal="pressed" from="Start/StartButton" to="." method="_on_start_button_pressed"]

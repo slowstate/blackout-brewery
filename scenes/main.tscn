@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqal78kfc8kbf"]
+[gd_scene load_steps=8 format=3 uid="uid://cqal78kfc8kbf"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_jn2jr"]
 [ext_resource type="PackedScene" uid="uid://b73anoref74kw" path="res://scenes/shop.tscn" id="2_5446u"]
 [ext_resource type="PackedScene" uid="uid://dyxfn6pp3hita" path="res://scenes/workstation.tscn" id="3_cia2w"]
 [ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="4_8kvh6"]
-[ext_resource type="PackedScene" uid="uid://b2px4hx22ijve" path="res://scenes/UI.tscn" id="4_lmlxg"]
+[ext_resource type="PackedScene" uid="uid://b2px4hx22ijve" path="res://scenes/start.tscn" id="4_lmlxg"]
+[ext_resource type="PackedScene" uid="uid://cfhaeugla4myc" path="res://scenes/victory.tscn" id="5_xvd4o"]
+[ext_resource type="PackedScene" uid="uid://y4uudet8bhno" path="res://scenes/defeat.tscn" id="6_paspv"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_jn2jr")
@@ -12,6 +14,7 @@ script = ExtResource("1_jn2jr")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Shop" parent="." instance=ExtResource("2_5446u")]
+visible = false
 
 [node name="Workstation" parent="." instance=ExtResource("3_cia2w")]
 visible = false
@@ -21,20 +24,45 @@ wait_time = 5.0
 one_shot = true
 
 [node name="DayTimer" type="Timer" parent="."]
+one_shot = true
 
-[node name="Menu" parent="." instance=ExtResource("4_lmlxg")]
-offset_left = -3.0
-offset_top = 322.0
-offset_right = -3.0
-offset_bottom = 322.0
+[node name="Start" parent="." instance=ExtResource("4_lmlxg")]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="Control" type="Control" parent="."]
+[node name="Victory" parent="." instance=ExtResource("5_xvd4o")]
+visible = false
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Defeat" parent="." instance=ExtResource("6_paspv")]
+visible = false
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="UI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="DayTimerLabel" type="Label" parent="Control"]
+[node name="DayTimerLabel" type="Label" parent="UI"]
 layout_mode = 0
 offset_left = 439.0
 offset_top = -315.0
@@ -43,7 +71,7 @@ offset_bottom = -292.0
 theme_override_fonts/font = ExtResource("4_8kvh6")
 text = "Time left:"
 
-[node name="OrderGoalLabel" type="Label" parent="Control"]
+[node name="OrderGoalLabel" type="Label" parent="UI"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = -315.0
@@ -59,3 +87,6 @@ text = "Goal: 0/0"
 [connection signal="workstationButtonPressed" from="Workstation" to="Shop" method="_on_workstation_workstation_button_pressed"]
 [connection signal="timeout" from="CustomerSpawnTimer" to="." method="_on_customer_spawn_timer_timeout"]
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]
+[connection signal="startPressed" from="Start" to="." method="_on_start_start_pressed"]
+[connection signal="continuePressed" from="Victory" to="." method="_on_victory_continue_pressed"]
+[connection signal="resetPressed" from="Defeat" to="." method="_on_defeat_reset_pressed"]

@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfhaeugla4myc"]
+
+[ext_resource type="Script" path="res://scripts/UI/victory.gd" id="1_csan1"]
+[ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="1_pdqk5"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_blctf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mm1oq"]
+font = ExtResource("1_pdqk5")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_2ypml"]
+font = ExtResource("1_pdqk5")
+font_size = 30
+
+[node name="victory" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_csan1")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+texture = SubResource("CanvasTexture_blctf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -80.0
+offset_right = 200.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CONGRATULATIONS!!"
+label_settings = SubResource("LabelSettings_mm1oq")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -27.0
+offset_right = 194.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You successfully finished the day! "
+label_settings = SubResource("LabelSettings_2ypml")
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = 26.0
+offset_right = 61.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_pdqk5")
+theme_override_font_sizes/font_size = 30
+text = "Continue"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]

@@ -24,7 +24,7 @@ position = Vector2(-489, 111)
 position = Vector2(0, -141)
 
 [node name="Lamp" parent="." instance=ExtResource("1_wfciu")]
-position = Vector2(484, 231)
+position = Vector2(500, 200)
 
 [node name="Button" type="Button" parent="."]
 offset_left = -206.0
@@ -35,8 +35,34 @@ theme_override_fonts/font = ExtResource("7_gd148")
 text = "Shop"
 clip_text = true
 
+[node name="LampTooltipLabel" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.5
+offset_top = -37.5
+offset_right = 210.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_gd148")
+theme_override_font_sizes/font_size = 30
+text = "Oh no!
+What happened to the lights?!
+Looks like we only have our trusty lamp to work with.
+Try dragging the lamp to continue brewing..."
+horizontal_alignment = 1
+
+[node name="LampTooltipTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [connection signal="workstationButtonPressed" from="." to="." method="_on_workstation_button_pressed"]
 [connection signal="bottleClicked" from="Bottle" to="." method="_on_bottle_bottle_clicked"]
 [connection signal="potionBaseClicked" from="GreenPotionBase" to="." method="_on_green_potion_base_potion_base_clicked"]
 [connection signal="potionClicked" from="Potion" to="." method="_on_potion_potion_clicked"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="LampTooltipTimer" to="." method="_on_lamp_tooltip_timer_timeout"]

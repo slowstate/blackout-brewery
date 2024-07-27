@@ -78,6 +78,10 @@ func _on_potion_updated(updated_potion):
 			current_customer.check_order(updated_potion)
 
 func _start_day():
+	if current_day == 1: workstation.show_lamp(false)
+	else: workstation.show_lamp(true)
+	
+	workstation.reset_lamp_position()
 	order_goal = 0 + current_day
 	orders_completed = 0
 	day_timer.wait_time = 61
@@ -108,7 +112,10 @@ func _change_scene(new_scene):
 	if new_scene == all_scenes[1]: ui.visible = false
 	if new_scene == all_scenes[2]: ui.visible = false
 	if new_scene == all_scenes[3]: ui.visible = true
-	if new_scene == all_scenes[4]: ui.visible = true
+	if new_scene == all_scenes[4]:
+		ui.visible = true
+		if current_day == 2:
+			workstation.show_lamp_tooltip()
 
 
 func _on_start_start_pressed():

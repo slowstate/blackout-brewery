@@ -35,7 +35,7 @@ func check_order(potion):
 			timer.wait_time = 4
 			timer.start()
 			customerOrderComplete.emit()
-		if orderFulfilled:
+		elif orderFulfilled:
 			order_dialog.text = "Thanks for the donation!"
 	else:
 		order_dialog.text ="I'm still waiting for my " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient)

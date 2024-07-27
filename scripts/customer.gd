@@ -22,18 +22,21 @@ func _process(delta):
 	pass
 
 func generate_order():
-	orderBase = randi_range(1, Recipes.bases.size()-1)
+	orderBase = Recipes.bases.green
+	#orderBase = randi_range(1, Recipes.bases.size()-1)
 	orderIngredient = randi_range(0, Recipes.ingredients.size()-1)
 	order_dialog.text = "Hi I want to buy " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient) + "!"
 	
 func check_order(potion):
 	if potion.base == orderBase && potion.ingredient == orderIngredient:
-		orderFulfilled = true
-		order_dialog.text = "Thank you for the " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient) + "!"
-		timer.stop()
-		timer.wait_time = 4
-		timer.start()
-		customerOrderComplete.emit()
+		if !orderFulfilled:
+			orderFulfilled = true
+			order_dialog.text = "Thank you for the " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient) + "!"
+			timer.wait_time = 4
+			timer.start()
+			customerOrderComplete.emit()
+		if orderFulfilled:
+			order_dialog.text = "Thanks for the donation!"
 	else:
 		order_dialog.text ="I'm still waiting for my " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient)
 		customerOrderWrong.emit()

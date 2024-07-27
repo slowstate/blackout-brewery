@@ -26,9 +26,11 @@ modulate_color = Color(0.306923, 0.306923, 0.306923, 1)
 
 [node name="Defeat" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hfemf")
@@ -36,9 +38,15 @@ script = ExtResource("1_hfemf")
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("CanvasTexture_secq3")
@@ -69,10 +77,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("2_y1tpk")
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 30
 theme_override_styles/hover = SubResource("StyleBoxTexture_0xme0")
-text = "RESTART GAME"
+text = "RESET GAME"
 
 [node name="Sprite2D" type="Sprite2D" parent="TextureRect/Defeat"]
 position = Vector2(158, -152)
 texture = ExtResource("2_vuyny")
+
+[connection signal="pressed" from="TextureRect/Defeat/ResetButton" to="." method="_on_reset_button_pressed"]

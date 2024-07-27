@@ -17,7 +17,7 @@ signal potionClicked
 	set(val):
 		base = val
 		_potion_updated()
-		
+
 @export var ingredient = Recipes.ingredients.none :
 	get: return ingredient
 	set(val):
@@ -33,12 +33,13 @@ func _ready():
 func _process(delta):
 	pass
 
+
 func _potion_updated():
 	if bottle == Recipes.bottle.added:
 		sprite_2d.texture = bottle_sprite
 	else: sprite_2d.texture = null
 
-	
+
 func _clear_potion():
 	bottle = Recipes.bottle.none
 	base = Recipes.bases.none

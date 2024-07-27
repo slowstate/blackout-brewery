@@ -77,20 +77,17 @@ func _on_potion_updated(updated_potion):
 			current_customer.check_order(updated_potion)
 
 func _start_day():
-	order_goal = 2 + current_day
+	order_goal = 0 + current_day
 	orders_completed = 0
 	day_timer.wait_time = 61
 	day_timer.start()
 
 func _finish_day():
 	get_tree().paused = true
-	var popup_instance = victory.instantiate()
-	add_child(popup_instance)
-	popup_instance.on_continue_callback = Callable(self, "_on_continue")
+	get_tree().change_scene_to_packed(victory)
 	
 func _on_continue():
 	get_tree().paused = false 
-	order_goal += 1
 	current_day += 1
 	_start_day()
 	

@@ -1,9 +1,9 @@
 extends Control
 
-@export var on_continue_callback: Callable
+@onready var main = $main
 
 func _on_continue_button_pressed():
-	if on_continue_callback:
-		on_continue_callback.call()
-	queue_free()
+	get_tree().paused = false 
+	main.current_day += 1
+	main._start_day()
 	

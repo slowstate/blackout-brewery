@@ -24,15 +24,6 @@ signal potionClicked
 		ingredient = val
 		_potion_updated()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _potion_updated():
 	if bottle == Recipes.bottle.added:

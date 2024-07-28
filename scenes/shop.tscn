@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b73anoref74kw"]
+[gd_scene load_steps=6 format=3 uid="uid://b73anoref74kw"]
 
 [ext_resource type="Texture2D" uid="uid://dsmto516rffkp" path="res://assets/backgrounds/shop.png" id="1_1s1f2"]
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_rbtev"]
 [ext_resource type="PackedScene" uid="uid://3tinlc3aoc6m" path="res://scenes/potion.tscn" id="3_nms6y"]
 [ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="3_s6rr8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_44g37"]
+font = ExtResource("3_s6rr8")
+font_size = 23
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_rbtev")
@@ -21,6 +25,20 @@ text = "Workstation"
 
 [node name="Potion" parent="." instance=ExtResource("3_nms6y")]
 position = Vector2(0, 196)
+
+[node name="TooltipLabel" type="Label" parent="."]
+offset_left = -554.0
+offset_top = -122.0
+offset_right = -153.0
+offset_bottom = -35.0
+label_settings = SubResource("LabelSettings_44g37")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Day1TooltipArrow" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(85, 292)
+polygon = PackedVector2Array(113, -9, 115, -27, 120, -22, 184, -79, 190, -73, 126, -17, 131, -12)
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="potionClicked" from="Potion" to="." method="_on_potion_potion_clicked"]

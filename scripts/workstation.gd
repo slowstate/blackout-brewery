@@ -2,21 +2,11 @@ extends Node2D
 
 @onready var potion = $Potion
 @onready var lamp = $Lamp
-@onready var lamp_tooltip_label = $LampTooltipLabel
-@onready var lamp_tooltip_timer = $LampTooltipTimer
+@onready var tooltip_label = $TooltipLabel
 
 signal potionUpdated(updatedPotion)
 
 signal workstationButtonPressed
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_button_pressed():
@@ -44,11 +34,6 @@ func show_lamp(show: bool):
 func reset_lamp_position():
 	lamp.position = Vector2(500, 200)
 
-func show_lamp_tooltip():
-	lamp_tooltip_label.visible = true
-	lamp_tooltip_timer.wait_time = 10
-	lamp_tooltip_timer.start()
+func show_tooltip(string):
+	tooltip_label.text = string
 
-
-func _on_lamp_tooltip_timer_timeout():
-	lamp_tooltip_label.visible = false

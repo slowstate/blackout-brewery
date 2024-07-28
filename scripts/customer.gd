@@ -1,11 +1,11 @@
 extends Node2D
 
-signal customerOrderTimeout
+signal customerOrderTimeout(completed: bool)
 signal customerOrderComplete
 signal customerOrderWrong
 var orderBase
 var orderIngredient
-var orderFulfilled = false
+var orderCompleted = false
 
 @onready var timer = $Timer
 @onready var order_dialog = $Order/OrderDialog
@@ -17,10 +17,6 @@ func _ready():
 	add_to_group("customers")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func generate_order():
 	orderBase = Recipes.bases.green
 	#orderBase = randi_range(1, Recipes.bases.size()-1)
@@ -29,21 +25,21 @@ func generate_order():
 	
 func check_order(potion):
 	if potion.base == orderBase && potion.ingredient == orderIngredient:
-		if !orderFulfilled:
-			orderFulfilled = true
+		if !orderCompleted:
+			orderCompleted = true
 			order_dialog.text = "Thank you for the " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient) + "!"
 			timer.wait_time = 4
 			timer.start()
 			customerOrderComplete.emit()
-		elif orderFulfilled:
+		elif orderCompleted:
 			order_dialog.text = "Thanks for the donation!"
 	else:
 		order_dialog.text ="I'm still waiting for my " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient)
 		customerOrderWrong.emit()
 
 func _on_timer_timeout():
-	customerOrderTimeout.emit()
+	customerOrderTimeout.emit(orderCompleted)
 
-func set_timeout():
-	timer.wait_time = randi_range(5, 10)
+func set_timeout(custom_wait_time:int = 20):
+	timer.wait_time = custom_wait_time
 	timer.start()

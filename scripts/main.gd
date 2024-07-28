@@ -13,6 +13,16 @@ var customer_scene = preload("res://scenes/customer.tscn")
 @onready var order_goal_label = $UI/OrderGoalLabel
 @onready var ui = $UI
 
+const DAY_LENGTH:int = 121
+
+# Tooltip strings for Shop
+const DAY_1_TOOLTIP: String = "Your first customer!\nBrew up their order in your Workstation."
+const CUSTOMER_ORDER_TIMEOUT_TOOLTIP: String = "Customers won't wait forever,\ncomplete their order before they leave!"
+const CUSTOMER_ORDER_WRONG_TOOLTIP: String = "You gave the wrong order!\nGiving the wrong order will decrease your time left."
+
+# Tooltip strings for Workstation
+const BREWING_TOOLTIP: String = "Your recipe list shows you how to brew each potion,\ntry brewing the customer's order."
+const LAMP_TOOLTIP: String = "Oh no!\nWhat happened to the lights?!\nYou'll have to make use of your trusty lamp.\nTry dragging the lamp to continue brewing..."
 
 var all_scenes = []
 
@@ -21,6 +31,10 @@ var order_goal
 var orders_completed
 var current_customer
 var new_day
+
+var customer_order_timeout_tooltip_shown:bool = false
+var customer_order_wrong_tooltip_shown:bool = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -58,17 +72,28 @@ func _on_customer_spawn_timer_timeout():
 	current_customer.customerOrderWrong.connect(_customer_order_wrong)
 	current_customer.add_to_group("Customer")
 	shop.add_child(current_customer)
+	if current_day == 1:
+		shop.show_tooltip(DAY_1_TOOLTIP)
+		shop.show_day_1_tooltip_arrow(true)
+	if current_day <= 2: current_customer.set_timeout(DAY_LENGTH)
 
 
-func _customer_order_timeout():
+func _customer_order_timeout(orderCompleted):
+	if !customer_order_timeout_tooltip_shown && !orderCompleted:
+		shop.show_tooltip(CUSTOMER_ORDER_TIMEOUT_TOOLTIP)
+		customer_order_timeout_tooltip_shown = true
 	if current_customer != null: current_customer.queue_free()
 	customer_spawn_timer.wait_time = randi_range(3, 5)
 	customer_spawn_timer.start()
 
 func _customer_order_complete():
+	shop.show_tooltip("")
 	orders_completed += 1
 
 func _customer_order_wrong():
+	if !customer_order_wrong_tooltip_shown:
+		shop.show_tooltip(CUSTOMER_ORDER_WRONG_TOOLTIP)
+		customer_order_wrong_tooltip_shown = true
 	day_timer.wait_time = day_timer.time_left - 3
 	day_timer.start()
 
@@ -78,13 +103,22 @@ func _on_potion_updated(updated_potion):
 			current_customer.check_order(updated_potion)
 
 func _start_day():
-	if current_day == 1: workstation.show_lamp(false)
-	else: workstation.show_lamp(true)
+	if current_day == 1:
+		workstation.show_lamp(false)
+		workstation.show_tooltip(BREWING_TOOLTIP)
+	elif current_day == 2:
+		workstation.show_tooltip(LAMP_TOOLTIP)
+		workstation.show_lamp(true)
+	else:
+		workstation.show_tooltip("")
+
 	
+	shop.show_tooltip("")
+	shop.show_day_1_tooltip_arrow(false)
 	workstation.reset_lamp_position()
 	order_goal = 0 + current_day
 	orders_completed = 0
-	day_timer.wait_time = 61
+	day_timer.wait_time = DAY_LENGTH
 	day_timer.start()
 	# Start spawn timer for first customer
 	customer_spawn_timer.wait_time = randi_range(3, 5)
@@ -114,8 +148,6 @@ func _change_scene(new_scene):
 	if new_scene == all_scenes[3]: ui.visible = true
 	if new_scene == all_scenes[4]:
 		ui.visible = true
-		if current_day == 2:
-			workstation.show_lamp_tooltip()
 
 
 func _on_start_start_pressed():

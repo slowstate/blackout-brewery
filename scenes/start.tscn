@@ -94,6 +94,7 @@ text = "Backstory"
 label_settings = SubResource("LabelSettings_tgyrh")
 
 [node name="TutorialLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = 38.0
 offset_top = -31.0
 offset_right = 169.0

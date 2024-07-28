@@ -5,16 +5,9 @@ signal potionSubmitted
 
 #@onready var customer = $Customer
 @onready var potion = $Potion
+@onready var tooltip_label = $TooltipLabel
+@onready var day_1_tooltip_arrow = $Day1TooltipArrow
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _on_button_pressed():
 	shopButtonPressed.emit()
@@ -32,3 +25,9 @@ func _on_potion_potion_clicked():
 	customer.check_order(potion)
 	potion._clear_potion()
 	potionSubmitted.emit()
+
+func show_tooltip(string):
+	tooltip_label.text = string
+
+func show_day_1_tooltip_arrow(show_arrow: bool):
+	day_1_tooltip_arrow.visible = show_arrow

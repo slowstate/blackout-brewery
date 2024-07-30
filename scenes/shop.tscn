@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b73anoref74kw"]
 
-[ext_resource type="Texture2D" uid="uid://dsmto516rffkp" path="res://assets/backgrounds/shop.png" id="1_1s1f2"]
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_rbtev"]
+[ext_resource type="Texture2D" uid="uid://ddgqba1ykn7jl" path="res://assets/backgrounds/shop1.png" id="2_26txv"]
 [ext_resource type="PackedScene" uid="uid://3tinlc3aoc6m" path="res://scenes/potion.tscn" id="3_nms6y"]
 [ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="3_s6rr8"]
 
@@ -13,7 +13,7 @@ font_size = 23
 script = ExtResource("1_rbtev")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_1s1f2")
+texture = ExtResource("2_26txv")
 
 [node name="Button" type="Button" parent="."]
 offset_left = -206.0
@@ -24,7 +24,7 @@ theme_override_fonts/font = ExtResource("3_s6rr8")
 text = "Workstation"
 
 [node name="Potion" parent="." instance=ExtResource("3_nms6y")]
-position = Vector2(0, 196)
+position = Vector2(0, 169)
 
 [node name="TooltipLabel" type="Label" parent="."]
 offset_left = -554.0

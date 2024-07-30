@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="1_8vnkk"]
 [ext_resource type="Script" path="res://scripts/UI/start.gd" id="1_wjkau"]
-[ext_resource type="Texture2D" uid="uid://mq4psnlum8dl" path="res://assets/sprites/customer.png" id="2_4wjmt"]
+[ext_resource type="Texture2D" uid="uid://mq4psnlum8dl" path="res://assets/sprites/Customer/customer_white.png" id="3_q76op"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_w3wco"]
 
@@ -82,7 +82,7 @@ text = "START"
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-304, 99)
 scale = Vector2(1.65, 1.65)
-texture = ExtResource("2_4wjmt")
+texture = ExtResource("3_q76op")
 
 [node name="BackstoryLabel" type="Label" parent="."]
 layout_mode = 0

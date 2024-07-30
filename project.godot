@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Recipes="*res://scripts/recipes.gd"
+AudioPlayer="*res://scenes/audio/audio_player.tscn"
 
 [display]
 

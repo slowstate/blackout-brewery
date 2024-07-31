@@ -1,12 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dyxfn6pp3hita"]
+[gd_scene load_steps=11 format=3 uid="uid://dyxfn6pp3hita"]
 
 [ext_resource type="Script" path="res://scripts/workstation.gd" id="1_gyorl"]
 [ext_resource type="Texture2D" uid="uid://c2ghuk5ucitc2" path="res://assets/backgrounds/workstation.png" id="1_lemh7"]
 [ext_resource type="PackedScene" uid="uid://edhssintvnyi" path="res://scenes/lamp.tscn" id="1_wfciu"]
 [ext_resource type="PackedScene" uid="uid://vm1l6c0v2knu" path="res://scenes/bottle.tscn" id="4_c1bbj"]
 [ext_resource type="PackedScene" uid="uid://cmjx6yh188wfx" path="res://scenes/potion_bases/green_potion_base.tscn" id="5_k4x1b"]
+[ext_resource type="PackedScene" uid="uid://ct5bt65tcq7hu" path="res://scenes/ingredients/scale_ingredient.tscn" id="5_lo2ms"]
 [ext_resource type="PackedScene" uid="uid://3tinlc3aoc6m" path="res://scenes/potion.tscn" id="6_m7865"]
 [ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="7_gd148"]
+[ext_resource type="PackedScene" uid="uid://b5el7lr8ynih" path="res://scenes/ingredients/leaf_potion_base.tscn" id="9_vpl2s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_24r2r"]
 font = ExtResource("7_gd148")
@@ -24,10 +26,14 @@ position = Vector2(-473, -196)
 [node name="GreenPotionBase" parent="." instance=ExtResource("5_k4x1b")]
 position = Vector2(-489, 111)
 
+[node name="ScalePotionBase" parent="." instance=ExtResource("5_lo2ms")]
+position = Vector2(-344, -274)
+
 [node name="Potion" parent="." instance=ExtResource("6_m7865")]
 position = Vector2(0, -141)
 
 [node name="Lamp" parent="." instance=ExtResource("1_wfciu")]
+visible = false
 position = Vector2(500, 200)
 
 [node name="Button" type="Button" parent="."]
@@ -53,6 +59,12 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_24r2r")
 horizontal_alignment = 1
+
+[node name="ScalePotionBase2" parent="." instance=ExtResource("5_lo2ms")]
+position = Vector2(-272, -276)
+
+[node name="LeafPotionBase" parent="." instance=ExtResource("9_vpl2s")]
+position = Vector2(-202, -277)
 
 [connection signal="workstationButtonPressed" from="." to="." method="_on_workstation_button_pressed"]
 [connection signal="bottleClicked" from="Bottle" to="." method="_on_bottle_bottle_clicked"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://dyxfn6pp3hita"]
 
 [ext_resource type="Script" path="res://scripts/workstation.gd" id="1_gyorl"]
-[ext_resource type="Texture2D" uid="uid://c2ghuk5ucitc2" path="res://assets/backgrounds/workstation.png" id="1_lemh7"]
 [ext_resource type="PackedScene" uid="uid://edhssintvnyi" path="res://scenes/lamp.tscn" id="1_wfciu"]
+[ext_resource type="Texture2D" uid="uid://qxskbbs7ekt" path="res://assets/backgrounds/workstation_blank.png" id="2_urdos"]
 [ext_resource type="PackedScene" uid="uid://vm1l6c0v2knu" path="res://scenes/bottle.tscn" id="4_c1bbj"]
 [ext_resource type="PackedScene" uid="uid://ct5bt65tcq7hu" path="res://scenes/ingredients/Envy.tscn" id="5_8revb"]
 [ext_resource type="PackedScene" uid="uid://cmjx6yh188wfx" path="res://scenes/potion_bases/green_potion_base.tscn" id="5_k4x1b"]
@@ -21,7 +21,8 @@ font_size = 30
 script = ExtResource("1_gyorl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_lemh7")
+position = Vector2(-8, 0)
+texture = ExtResource("2_urdos")
 
 [node name="Bottle" parent="." instance=ExtResource("4_c1bbj")]
 position = Vector2(464, -205)
@@ -52,10 +53,10 @@ visible = false
 position = Vector2(500, 200)
 
 [node name="Button" type="Button" parent="."]
-offset_left = -206.0
-offset_top = 278.0
-offset_right = 190.0
-offset_bottom = 318.0
+offset_left = -197.0
+offset_top = 257.0
+offset_right = 199.0
+offset_bottom = 297.0
 theme_override_fonts/font = ExtResource("7_gd148")
 text = "Shop"
 clip_text = true

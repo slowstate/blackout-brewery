@@ -41,7 +41,6 @@ var customer_order_wrong_tooltip_shown:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	AudioPlayer.play_music_level(AudioPlayer.title_music)
 	all_scenes = [
 		$Start,
 		$Victory,

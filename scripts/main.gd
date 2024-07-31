@@ -68,7 +68,6 @@ func _on_workstation_workstation_button_pressed():
 
 func _on_customer_spawn_timer_timeout():
 	if current_customer != null:
-		AudioPlayer.play_FX(AudioPlayer.door_fx)
 		current_customer.queue_free()
 	
 	current_customer = customer_scene.instantiate()

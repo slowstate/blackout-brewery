@@ -26,7 +26,7 @@ modulate_color = Color(0.306923, 0.306923, 0.306923, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_tgyrh"]
 font = ExtResource("1_8vnkk")
-font_size = 30
+font_size = 25
 
 [node name="Start" type="Control"]
 layout_mode = 3
@@ -86,19 +86,26 @@ texture = ExtResource("3_q76op")
 
 [node name="BackstoryLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 41.0
-offset_top = -119.0
-offset_right = 172.0
-offset_bottom = -48.0
-text = "Backstory"
+offset_left = -496.0
+offset_top = -164.0
+offset_right = 842.0
+offset_bottom = 19.0
+scale = Vector2(0.880001, 1)
+text = "In a shadowy realm, you own a small tavern.
+One day, a naughty customer who didn't want to pay cursed you and your tavern
+left u with no light. No matter if it day or night,
+ there is only darkness in your brewary. 
+But, even in the darkness is the light !
+ The lantern shine through your obstances ! running ur business."
 label_settings = SubResource("LabelSettings_tgyrh")
+horizontal_alignment = 1
 
 [node name="TutorialLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 38.0
-offset_top = -31.0
-offset_right = 169.0
-offset_bottom = 40.0
+offset_left = -88.0
+offset_top = 40.0
+offset_right = 43.0
+offset_bottom = 111.0
 text = "Tutorial"
 label_settings = SubResource("LabelSettings_tgyrh")
 

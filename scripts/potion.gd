@@ -23,6 +23,12 @@ signal potionClicked
 	set(val):
 		ingredient = val
 		_potion_updated()
+		
+@export var ingredient2 = Recipes.ingredients.none :
+	get: return ingredient
+	set(val):
+		ingredient2 = val
+		_potion_updated()
 
 
 func _potion_updated():

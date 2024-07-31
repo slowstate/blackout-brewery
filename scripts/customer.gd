@@ -28,7 +28,7 @@ var customer_sprites = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	AudioPlayer.play_FX(AudioPlayer.door_fx)
+	
 	generate_order()
 	set_timeout()
 	random_sprite()

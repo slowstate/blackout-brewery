@@ -1,9 +1,11 @@
 extends Node2D
 
+@onready var animated_lanter = $AnimatedSprite2D
 var draggable = false
 var mouse_offset = Vector2(0, 0)
 
 func _process(delta):
+	animated_lanter.play("lanternAnimation")
 	if draggable:
 		followMouse()
 

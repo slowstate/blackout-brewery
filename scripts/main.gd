@@ -41,7 +41,6 @@ var customer_order_wrong_tooltip_shown:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	AudioPlayer.play_music_level(AudioPlayer.title_music)
 	all_scenes = [
 		$Start,
 		$Victory,
@@ -69,6 +68,7 @@ func _on_workstation_workstation_button_pressed():
 
 func _on_customer_spawn_timer_timeout():
 	if current_customer != null:
+		AudioPlayer.play_FX(AudioPlayer.door_fx)
 		current_customer.queue_free()
 	
 	current_customer = customer_scene.instantiate()

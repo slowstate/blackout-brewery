@@ -36,10 +36,15 @@ func _ready():
 
 
 func generate_order():
-	orderBase = Recipes.bases.green
-	#orderBase = randi_range(1, Recipes.bases.size()-1)
-	orderIngredient = randi_range(0, Recipes.ingredients.size()-1)
-	order_dialog.text = "Hi I want to buy " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient) + "!"
+	orderBase = randi_range(1, Recipes.bases.size()-1)
+	orderIngredient = randi_range(1, Recipes.ingredients.size()-1)
+	
+	var orderBaseString = ""
+	if orderBase == Recipes.bases.green: orderBaseString = "Treant's Sweat"
+	elif orderBase == Recipes.bases.purple: orderBaseString = "Brute's Blood"
+	elif orderBase == Recipes.bases.purple: orderBaseString = "Arachnid's Ichor"
+	
+	order_dialog.text = "Hi, I want to buy a potion with " + Recipes.bases.find_key(orderBase) + " and " + Recipes.ingredients.find_key(orderIngredient) + "!"
 	
 func check_order(potion):
 	if potion.base == orderBase && potion.ingredient == orderIngredient:

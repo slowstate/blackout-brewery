@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5el7lr8ynih"]
+[gd_scene load_steps=4 format=3 uid="uid://ct5bt65tcq7hu"]
 
-[ext_resource type="Script" path="res://scripts/potion_ingredient.gd" id="1_8ev6u"]
+[ext_resource type="Script" path="res://scripts/potion_ingredient.gd" id="1_rsqpi"]
+[ext_resource type="Texture2D" uid="uid://b5u60hmivhbhc" path="res://assets/sprites/ingredients/Envy.png" id="2_ak6l3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wygvf"]
 size = Vector2(56, 57)
 
-[node name="LeafPotionBase" type="Node2D"]
-script = ExtResource("1_8ev6u")
+[node name="Envy" type="Node2D"]
+script = ExtResource("1_rsqpi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ak6l3")
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -68,10 +68,10 @@ visible_characters_behavior = 1
 
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 2
-offset_left = 154.0
-offset_top = 206.0
-offset_right = 291.0
-offset_bottom = 270.0
+offset_left = 29.0
+offset_top = 38.0
+offset_right = 166.0
+offset_bottom = 102.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_fonts/font = ExtResource("1_8vnkk")
@@ -92,21 +92,11 @@ offset_right = 842.0
 offset_bottom = 19.0
 scale = Vector2(0.880001, 1)
 text = "In a shadowy realm, you own a small tavern.
-One day, a naughty customer who didn't want to pay cursed you and your tavern
-left u with no light. No matter if it day or night,
- there is only darkness in your brewary. 
-But, even in the darkness is the light !
- The lantern shine through your obstances ! running ur business."
+One day, a naughty customer who didn't want to pay cursed you and your tavern,
+leaving you enshrouded in darkness.
+Regardless the time of day, your brewery never brightens. 
+Fortunately, you have your trusty lantern by your side."
 label_settings = SubResource("LabelSettings_tgyrh")
 horizontal_alignment = 1
-
-[node name="TutorialLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = -88.0
-offset_top = 40.0
-offset_right = 43.0
-offset_bottom = 111.0
-text = "Tutorial"
-label_settings = SubResource("LabelSettings_tgyrh")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

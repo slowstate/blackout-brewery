@@ -17,7 +17,9 @@ func _on_workstation_potion_updated(updatedPotion):
 	potion.bottle = updatedPotion.bottle
 	potion.base = updatedPotion.base
 	potion.ingredient = updatedPotion.ingredient
-	potion.sprite_2d.texture = updatedPotion.sprite_2d.texture
+	potion.bottle_sprite_2d.texture = updatedPotion.bottle_sprite_2d.texture
+	potion.solid_sprite_2d.texture = updatedPotion.solid_sprite_2d.texture
+	potion.gradient_sprite_2d.texture = updatedPotion.gradient_sprite_2d.texture
 
 func _on_potion_potion_clicked():
 	var customer = get_tree().get_first_node_in_group("Customer")

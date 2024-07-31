@@ -24,4 +24,4 @@ func play_FX(stream: AudioStream, volume = 0.0):
 	fx_player.play()
 	
 	await fx_player.finished
-	fx_player.queuefree()
+	fx_player.queue_free()

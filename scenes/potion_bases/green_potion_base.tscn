@@ -1,21 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmjx6yh188wfx"]
 
 [ext_resource type="Script" path="res://scripts/potion_base.gd" id="1_4gw3k"]
-[ext_resource type="Texture2D" uid="uid://ddgaf2js8r8b7" path="res://assets/sprites/green_potion_base.png" id="1_km6wt"]
+[ext_resource type="Texture2D" uid="uid://dxfaqcsumejp2" path="res://assets/sprites/potion_base/GreenBucket.png" id="2_18bkh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r07tr"]
-size = Vector2(113, 169)
+size = Vector2(124, 169)
 
 [node name="GreenPotionBase" type="Node2D"]
 script = ExtResource("1_4gw3k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_km6wt")
+texture = ExtResource("2_18bkh")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(5.5, -1.5)
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_r07tr")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

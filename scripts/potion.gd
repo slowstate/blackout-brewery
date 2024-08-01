@@ -36,28 +36,34 @@ signal potionClicked
 
 
 func _potion_updated():
-	print(str(base))
-	print(str(ingredient))
 	if bottle == Recipes.bottle.added:
 		bottle_sprite_2d.texture = bottle_sprite
+		if base == Recipes.bases.none && ingredient == Recipes.ingredients.none:
+			AudioPlayer.play_FX(AudioPlayer.empty_bottle_fx)
 	else: bottle_sprite_2d.texture = null
 	
 	#Set potion base layer
 	if base == Recipes.bases.green:
 		solid_sprite_2d.texture = green_potion_base_sprite
+		AudioPlayer.play_FX(AudioPlayer.cauldron_pour_fx)
 	elif base == Recipes.bases.red:
 		solid_sprite_2d.texture = red_potion_base_sprite
+		AudioPlayer.play_FX(AudioPlayer.cauldron_pour_fx)
 	elif base == Recipes.bases.purple:
 		solid_sprite_2d.texture = purple_potion_base_sprite
+		AudioPlayer.play_FX(AudioPlayer.cauldron_pour_fx)
 	else: solid_sprite_2d.texture = null
 	
 	#Set potion gradient layer
 	if ingredient == Recipes.ingredients.envy:
 		gradient_sprite_2d.texture = envy_sprite
+		AudioPlayer.play_FX(AudioPlayer.ingrdient_add_fx)
 	elif ingredient == Recipes.ingredients.galberry:
 		gradient_sprite_2d.texture = galberry_sprite
+		AudioPlayer.play_FX(AudioPlayer.ingrdient_add_fx)
 	elif ingredient == Recipes.ingredients.azureleaf:
 		gradient_sprite_2d.texture = azureleaf_sprite
+		AudioPlayer.play_FX(AudioPlayer.ingrdient_add_fx)
 	else: gradient_sprite_2d.texture = null
 
 func _clear_potion():

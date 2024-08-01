@@ -45,7 +45,7 @@ func show_lamp(show: bool):
 	lamp.visible = show
 
 func reset_lamp_position():
-	lamp.position = Vector2(500, 200)
+	lamp.position = Vector2(450, 50)
 
 func show_tooltip(string):
 	tooltip_label.text = string

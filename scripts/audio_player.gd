@@ -1,8 +1,12 @@
 extends AudioStreamPlayer
 
-const title_music =preload("res://assets/music/BB_titlev1_OwenGrey.wav")
+const title_music = preload("res://assets/music/BB_titlev1_OwenGrey.wav")
 const shop_music = preload("res://assets/music/BB_gameplayv1_OwenGrey.wav")
 const door_fx = preload("res://assets/music/squeaky.mp3")
+const empty_bottle_fx = preload("res://assets/sound_effects/empty-bottle.wav")
+const cauldron_pour_fx = preload("res://assets/sound_effects/cauldron-pour.wav")
+const ingrdient_add_fx = preload("res://assets/sound_effects/ingredient-add.wav")
+const submit_potion_fx = preload("res://assets/sound_effects/submit-potion.wav")
 
 func _play_music(music: AudioStream, volume = 0.0):
 	if stream == music:

@@ -25,6 +25,7 @@ func _on_potion_potion_clicked():
 	var customer = get_tree().get_first_node_in_group("Customer")
 	if potion.bottle == Recipes.bottle.none || customer == null: return
 	customer.check_order(potion)
+	AudioPlayer.play_FX(AudioPlayer.submit_potion_fx)
 	potion._clear_potion()
 	potionSubmitted.emit()
 

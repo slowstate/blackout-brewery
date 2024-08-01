@@ -2,8 +2,6 @@ extends Node2D
 
 var customer_scene = preload("res://scenes/customer.tscn")
 
-
-
 @onready var start = $Start
 @onready var victory = $Victory
 @onready var defeat = $Defeat
@@ -13,8 +11,8 @@ var customer_scene = preload("res://scenes/customer.tscn")
 @onready var day_timer = $DayTimer
 @onready var day_timer_label = $UI/DayTimerLabel
 @onready var order_goal_label = $UI/OrderGoalLabel
+@onready var current_day_label = $UI/CurrentDayLabel
 @onready var ui = $UI
-
 
 const DAY_LENGTH:int = 121
 
@@ -41,6 +39,7 @@ var customer_order_wrong_tooltip_shown:bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	AudioPlayer.play_music_level(AudioPlayer.title_music)
 	all_scenes = [
 		$Start,
 		$Victory,
@@ -80,6 +79,7 @@ func _on_customer_spawn_timer_timeout():
 		shop.show_tooltip(DAY_1_TOOLTIP)
 		shop.show_day_1_tooltip_arrow(true)
 	if current_day <= 2: current_customer.set_timeout(DAY_LENGTH)
+	if current_day > 2: current_customer.set_timeout(randi_range(20-current_day, 30-current_day))
 
 
 func _customer_order_timeout(orderCompleted):
@@ -116,7 +116,7 @@ func _start_day():
 	else:
 		workstation.show_tooltip("")
 
-	
+	current_day_label.text = "Day: " + str(current_day)
 	shop.show_tooltip("")
 	shop.show_day_1_tooltip_arrow(false)
 	workstation.reset_lamp_position()

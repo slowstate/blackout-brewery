@@ -86,13 +86,13 @@ texture = ExtResource("3_q76op")
 
 [node name="BackstoryLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = -496.0
+offset_left = -323.0
 offset_top = -164.0
-offset_right = 842.0
+offset_right = 694.0
 offset_bottom = 19.0
 scale = Vector2(0.880001, 1)
 text = "In a shadowy realm, you own a small tavern.
-One day, a naughty customer who didn't want to pay cursed you and your tavern,
+One day, a fierce customer cursed you and your tavern,
 leaving you enshrouded in darkness.
 Regardless the time of day, your brewery never brightens. 
 Fortunately, you have your trusty lantern by your side."

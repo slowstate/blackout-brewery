@@ -12,14 +12,12 @@ var customer_darkred = preload("res://assets/sprites/Customer/customer_darkred.p
 var customer_green = preload("res://assets/sprites/Customer/customer_green.png")
 var customer_purple = preload("res://assets/sprites/Customer/customer_purple.png")
 var customer_red = preload("res://assets/sprites/Customer/customer_red.png")
-var customer_white = preload("res://assets/sprites/Customer/customer_white.png")
 
 @onready var timer = $Timer
 @onready var order_dialog = $Order/OrderDialog
 
 
 var customer_sprites = [
-	customer_white,
 	customer_blue,
 	customer_red,
 	customer_green,
@@ -41,10 +39,10 @@ func generate_order():
 	
 	var orderBaseString = ""
 	if orderBase == Recipes.bases.green: orderBaseString = "Treant's Sweat"
-	elif orderBase == Recipes.bases.purple: orderBaseString = "Brute's Blood"
+	elif orderBase == Recipes.bases.red: orderBaseString = "Brute's Blood"
 	elif orderBase == Recipes.bases.purple: orderBaseString = "Arachnid's Ichor"
 	
-	order_dialog.text = "Hi, I want to buy a potion with " + Recipes.bases.find_key(orderBase) + " and " + Recipes.ingredients.find_key(orderIngredient) + "!"
+	order_dialog.text = "Hi, I want to buy a potion with " + orderBaseString + " and " + Recipes.ingredients.find_key(orderIngredient) + "!"
 	
 func check_order(potion):
 	if potion.base == orderBase && potion.ingredient == orderIngredient:

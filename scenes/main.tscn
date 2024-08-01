@@ -80,6 +80,15 @@ offset_bottom = -292.0
 theme_override_fonts/font = ExtResource("4_8kvh6")
 text = "Goal: 0/0"
 
+[node name="CurrentDayLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 338.0
+offset_top = -315.0
+offset_right = 434.0
+offset_bottom = -292.0
+theme_override_fonts/font = ExtResource("4_8kvh6")
+text = "Day: "
+
 [connection signal="potionSubmitted" from="Shop" to="Workstation" method="_on_shop_potion_submitted"]
 [connection signal="shopButtonPressed" from="Shop" to="." method="_on_shop_shop_button_pressed"]
 [connection signal="potionUpdated" from="Workstation" to="Shop" method="_on_workstation_potion_updated"]

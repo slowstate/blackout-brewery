@@ -15,7 +15,7 @@ var customer_red = preload("res://assets/sprites/Customer/customer_red.png")
 
 @onready var timer = $Timer
 @onready var order_dialog = $Order/OrderDialog
-
+@onready var sprite_2d = $Sprite2D
 
 var customer_sprites = [
 	customer_blue,
@@ -23,6 +23,8 @@ var customer_sprites = [
 	customer_green,
 	customer_purple,
 	customer_darkred]
+	
+var orderBaseString = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,8 +38,7 @@ func _ready():
 func generate_order():
 	orderBase = randi_range(1, Recipes.bases.size()-1)
 	orderIngredient = randi_range(1, Recipes.ingredients.size()-1)
-	
-	var orderBaseString = ""
+
 	if orderBase == Recipes.bases.green: orderBaseString = "Treant's Sweat"
 	elif orderBase == Recipes.bases.red: orderBaseString = "Brute's Blood"
 	elif orderBase == Recipes.bases.purple: orderBaseString = "Arachnid's Ichor"
@@ -48,14 +49,14 @@ func check_order(potion):
 	if potion.base == orderBase && potion.ingredient == orderIngredient:
 		if !orderCompleted:
 			orderCompleted = true
-			order_dialog.text = "Thank you for the " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient) + "!"
+			order_dialog.text = "Thank you for the " + orderBaseString + " with " + Recipes.ingredients.find_key(orderIngredient) + "!"
 			timer.wait_time = 4
 			timer.start()
 			customerOrderComplete.emit()
 		elif orderCompleted:
 			order_dialog.text = "Thanks for the donation!"
 	else:
-		order_dialog.text ="I'm still waiting for my " + Recipes.bases.find_key(orderBase) + " with " + Recipes.ingredients.find_key(orderIngredient)
+		order_dialog.text ="I'm still waiting for my " + orderBaseString + " with " + Recipes.ingredients.find_key(orderIngredient)
 		customerOrderWrong.emit()
 
 
@@ -70,5 +71,4 @@ func set_timeout(custom_wait_time:int = 20):
 func random_sprite():
 	var random_index = randi() % customer_sprites.size()
 	var random_sprite = customer_sprites[random_index]
-	var sprite_node = get_node("CustomerSprite")
-	sprite_node.texture = random_sprite
+	sprite_2d.texture = random_sprite

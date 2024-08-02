@@ -8,7 +8,11 @@ radius = 50.01
 [node name="Potion" type="Node2D"]
 script = ExtResource("1_fq7so")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SolidSprite2D" type="Sprite2D" parent="."]
+
+[node name="GradientSprite2D" type="Sprite2D" parent="."]
+
+[node name="BottleSprite2D" type="Sprite2D" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -16,5 +20,5 @@ script = ExtResource("1_fq7so")
 shape = SubResource("CircleShape2D_7w2mk")
 
 [connection signal="property_list_changed" from="." to="." method="_on_property_list_changed"]
-[connection signal="property_list_changed" from="Sprite2D" to="." method="_on_sprite_2d_property_list_changed"]
+[connection signal="property_list_changed" from="BottleSprite2D" to="." method="_on_sprite_2d_property_list_changed"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

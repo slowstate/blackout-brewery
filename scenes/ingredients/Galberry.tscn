@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn2660ctlyghp"]
+
+[ext_resource type="Script" path="res://scripts/potion_ingredient.gd" id="1_yyvxl"]
+[ext_resource type="Texture2D" uid="uid://brdeydvmdj6kt" path="res://assets/sprites/ingredients/Galberry.png" id="2_s6c78"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wygvf"]
+size = Vector2(56, 57)
+
+[node name="Galberry" type="Node2D"]
+script = ExtResource("1_yyvxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_s6c78")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_wygvf")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

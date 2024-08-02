@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://y4uudet8bhno"]
 
 [ext_resource type="Script" path="res://scripts/UI/defeat.gd" id="1_hfemf"]
-[ext_resource type="Texture2D" uid="uid://mq4psnlum8dl" path="res://assets/sprites/customer.png" id="2_vuyny"]
+[ext_resource type="Texture2D" uid="uid://mq4psnlum8dl" path="res://assets/sprites/Customer/customer_white.png" id="2_vuyny"]
 [ext_resource type="FontFile" uid="uid://b0trcqqmj3o8" path="res://assets/fonts/PurevilRegular-6RaD6.ttf" id="2_y1tpk"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_secq3"]

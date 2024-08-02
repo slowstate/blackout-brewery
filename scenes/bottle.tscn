@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://vm1l6c0v2knu"]
 
 [ext_resource type="Script" path="res://scripts/bottle.gd" id="1_25p8h"]
-[ext_resource type="Texture2D" uid="uid://g2lqa11s1xg3" path="res://assets/sprites/bottle.png" id="1_jqiyj"]
+[ext_resource type="Texture2D" uid="uid://c1os5dnemtjhu" path="res://assets/sprites/bottles/BigBottle/Bottle.png" id="2_irjqj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vst2e"]
 radius = 50.01
@@ -10,7 +10,7 @@ radius = 50.01
 script = ExtResource("1_25p8h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_jqiyj")
+texture = ExtResource("2_irjqj")
 
 [node name="Area2D" type="Area2D" parent="."]
 
